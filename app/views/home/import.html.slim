@@ -1,0 +1,7 @@
+- if @rss
+  p Importing articles from RSS feed: #{@rss}
+
+- if @rssItems
+  p #{@rssItems.count} articles imported
+
+p = link_to 'All articles', root_path

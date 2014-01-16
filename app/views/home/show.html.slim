@@ -1,0 +1,7 @@
+- if @article_single
+  h3 #{@article_single.title.html_safe}
+  
+  p
+    i #{URI.parse(@article_single.rss_url).host}
+
+  div #{@article_single.body.html_safe}

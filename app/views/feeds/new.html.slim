@@ -1,0 +1,11 @@
+= form_tag feeds_path, method: :post do
+  div Feed title:
+  = text_field_tag :title
+  div Feed URL:
+  = text_field_tag :url
+  div = submit_tag 'Submit', class: 'btn btn-primary'
+
+- if @feed_exists
+  p
+    The feed with URL #{@feed_exists.url} already exists:
+    = link_to 'Existing feed', feed_url(@feed_exists)

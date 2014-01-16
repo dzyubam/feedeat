@@ -1,0 +1,11 @@
+- if @all_feeds.exists?
+  p Total number of feeds stored: #{@all_feeds.length}
+  ol
+    - @all_feeds.each do |one_feed|
+      li
+        h3 #{one_feed.title}
+        p #{one_feed.url}
+        p = link_to 'Import', import_path(:feed_id => one_feed.id), method: :get, data: { confirm: 'Are you sure?' }
+- else
+  h3 No feeds stored yet
+  = link_to 'Add new feed', new_feed_path

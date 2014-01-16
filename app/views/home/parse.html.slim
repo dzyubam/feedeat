@@ -1,0 +1,17 @@
+= form_tag parse_path, method: :get do
+  = text_field_tag :rss
+  = submit_tag 'Submit', class: 'btn btn-primary'
+
+- if @rss
+  = form_tag import_path, method: :get do
+    = text_field_tag :rss
+    = submit_tag 'Import', class: 'btn btn-primary'
+
+- if @rss
+  p RSS feed: #{@rss}
+
+- if @rssItems
+  -# raise @rssItems.inspect
+  ol 
+    - @rssItems.each do |item|
+      == render partial: 'item', locals: { item: item }

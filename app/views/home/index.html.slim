@@ -1,0 +1,31 @@
+= form_tag parse_path, method: :get do
+  = text_field_tag :rss
+  = submit_tag 'Parse', class: 'btn btn-primary'
+
+= form_tag root_path, method: :get do
+  = text_field_tag :query
+  = submit_tag 'Search', class: 'btn btn-primary'
+
+- if params[:query].present?
+  p = link_to 'Return to all articles', root_path
+
+- if @articles
+  p # articles displayed: #{@articles.length}
+  -# raise @articles.inspect
+  - @articles.each do |one_article|
+    -# raise one_article.inspect
+    
+    div
+      h3
+        a href="#{one_article.rss_url}" target="_blank"
+          #{one_article.title.html_safe}
+
+    p
+      i #{URI.parse(one_article.rss_url).host}
+    p
+      i id: #{one_article.id}, digest: #{one_article.unique_hash}
+    p
+      i created at: #{one_article.created_at.to_s}, updated: #{one_article.updated_at.to_s}
+
+    div style="overflow: auto"
+      #{one_article.body.html_safe}
