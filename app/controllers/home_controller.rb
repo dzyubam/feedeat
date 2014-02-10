@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = Article.search(params[:query])
+      @articles = Article.search(params[:query]).sort_by{|s| s[:updated_at]}.reverse
     else
       @articles = Article.order("updated_at DESC").to_a
     end
