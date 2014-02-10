@@ -6,6 +6,7 @@
         h3 #{one_feed.title}
         p #{one_feed.url}
         p = link_to 'Import', import_path(:feed_id => one_feed.id), method: :get, data: { confirm: 'Are you sure?' }
+        p = link_to 'Delete', feed_path(:id => one_feed.id), method: :delete, data: { confirm: 'All articles of this feed will also be deleted. Are you sure?' }
 - else
   h3 No feeds stored yet
   = link_to 'Add new feed', new_feed_path

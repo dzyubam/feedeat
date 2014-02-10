@@ -7,7 +7,7 @@ Feedeat::Application.routes.draw do
   get '/import/(:rss_url)', to: 'home#import', as: :import
   get '/feeds', to: 'feeds#index'
   get '/feeds/index', to: 'feeds#index', as: :index
-  resources :feeds, :only => [:show, :new, :create]
+  resources :feeds, :only => [:show, :new, :create, :destroy]
 
   # You can have the root of your site routed with "root"
   root 'home#index'

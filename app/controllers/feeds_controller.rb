@@ -23,4 +23,11 @@ class FeedsController < ApplicationController
       redirect_to index_path
     end
   end
+
+  def destroy
+    @feed_single = Feed.find(params[:id])
+    @feed_single.destroy
+
+    redirect_to feeds_path
+  end
 end
