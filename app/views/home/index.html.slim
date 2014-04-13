@@ -6,7 +6,10 @@
   p = link_to 'Return to all articles', root_path
 
 - if @articles
-  p # articles displayed: #{@articles.length}
+  p
+    # articles displayed: #{@articles.length}
+    = link_to 'Show feeds', feeds_path
+
   -# raise @articles.inspect
   - @articles.each do |one_article|
     -# raise one_article.inspect
