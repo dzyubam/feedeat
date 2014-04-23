@@ -10,7 +10,8 @@ class HomeController < ApplicationController
     if params[:query].present?
       @articles = Article.search(params[:query]).sort_by{|s| s[:updated_at]}.reverse
     else
-      @articles = Article.order("updated_at DESC").to_a
+      @articles = Article.order("updated_at DESC").paginate(:page => params[:page],
+                                                            :per_page => 20).to_a
     end
   end
 

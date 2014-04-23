@@ -10,6 +10,9 @@
     # articles displayed: #{@articles.length}
     = link_to 'Show feeds', feeds_path
 
+  p
+    = will_paginate @articles
+
   -# raise @articles.inspect
   - @articles.each do |one_article|
     -# raise one_article.inspect

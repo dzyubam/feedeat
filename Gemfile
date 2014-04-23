@@ -10,6 +10,9 @@ gem 'thin'
 gem 'simple_form'
 gem 'sqlite3'
 gem 'tire'
+#gem 'redis'
+#gem 'sidekiq'
+gem 'will_paginate', '~> 3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
