@@ -8,9 +8,11 @@ class HomeController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = Article.search(params[:query]).sort_by{|s| s[:updated_at]}.reverse
+      @articles = Article.tire.search params[:query], page: params[:page], per_page: 20
+#                    .sort_by{|s| s[:updated_at]}
+#                    .reverse
     else
-      @articles = Article.order("updated_at DESC").paginate(:page => params[:page],
+      @articles = Article.order("updated_at DESC").page(:page => params[:page],
                                                             :per_page => 20).to_a
     end
   end
