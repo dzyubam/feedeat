@@ -1,5 +1,7 @@
 - if @all_feeds.exists?
   p Total number of feeds stored: #{@all_feeds.length}
+  p
+    = link_to 'Back to articles', root_path
   ol
     - @all_feeds.each do |one_feed|
       li
