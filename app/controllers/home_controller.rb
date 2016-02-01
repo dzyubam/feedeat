@@ -37,6 +37,8 @@ class HomeController < ApplicationController
     if @rss =~ URI::regexp #is this a URL?
       rssParser = SimpleRSS.parse open(@rss)
       @rssItems = rssParser.items
+      # counter for imported articles
+      @counter = 0
 
       @rssItems.each do |item|
         # check if the article with the same title and description was already imported
@@ -55,6 +57,11 @@ class HomeController < ApplicationController
                                       :rss_url => item.link,
                                       :unique_hash => @computed_hash)
           end
+
+          if @saved_item
+            @counter = @counter + 1
+          end
+
           unless @saved_item.save
             raise @saved_item.inspect
           end

@@ -2,6 +2,8 @@
   p Importing articles from RSS feed: #{@rss}
 
 - if @rssItems
-  p #{@rssItems.count} articles imported
+  p #{@counter} articles imported
+  p #{@rssItems.count} articles in feed
+
 
 p = link_to 'Back to articles', root_path
